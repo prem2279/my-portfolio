@@ -5,133 +5,137 @@ import { heroData, profileEncryptedPath, resumeEncryptedPath } from "@/src/data/
 import { fetchAndDecryptAsset, triggerDownload } from "@/src/utils/file-utils";
 
 export default function Hero() {
-  const [profileUrl, setProfileUrl] = useState<string>('');
-  const [isDownloading, setIsDownloading] = useState(false);
-  
-  // Get key from Env
-  const SECRET_KEY = process.env.NEXT_PUBLIC_ASSET_KEY || "";
+    const [profileUrl, setProfileUrl] = useState<string>('');
+    const [isDownloading, setIsDownloading] = useState(false);
 
-  useEffect(() => {
-    let active = true;
+    // Get key from Env
+    const SECRET_KEY = process.env.NEXT_PUBLIC_ASSET_KEY || "";
 
-    const loadProfile = async () => {
-      if (SECRET_KEY && profileEncryptedPath) {
-        const url = await fetchAndDecryptAsset(profileEncryptedPath, SECRET_KEY, 'image/jpeg');
-        if (active) setProfileUrl(url);
-      }
-    };
+    useEffect(() => {
+        let active = true;
 
-    loadProfile();
+        const loadProfile = async () => {
+            if (SECRET_KEY && profileEncryptedPath) {
+                const url = await fetchAndDecryptAsset(profileEncryptedPath, SECRET_KEY, 'image/jpeg');
+                if (active) setProfileUrl(url);
+            }
+        };
 
-    // Cleanup Blob URL on unmount
-    return () => { 
-      active = false;
-      if (profileUrl) URL.revokeObjectURL(profileUrl); 
-    };
-  }, [SECRET_KEY]); // profileUrl removed from deps to prevent loop
+        loadProfile();
 
-  const handleActionClick = async (e: React.MouseEvent, action: any) => {
-    if (action.isResume) {
-      e.preventDefault();
-      if (isDownloading) return;
+        // Cleanup Blob URL on unmount
+        return () => {
+            active = false;
+            if (profileUrl) URL.revokeObjectURL(profileUrl);
+        };
+    }, [SECRET_KEY]); // profileUrl removed from deps to prevent loop
 
-      setIsDownloading(true);
-      try {
-        // Fetch, Decrypt, and Download on Click
-        const url = await fetchAndDecryptAsset(resumeEncryptedPath, SECRET_KEY, 'application/pdf');
-        if (url) {
-          triggerDownload(url, "Prem_Kumar_Gundu_Resume.pdf");
-          // Clean up the blob after a short delay
-          setTimeout(() => URL.revokeObjectURL(url), 1000);
-        } else {
-          alert("Could not load resume. Please try again.");
+    const handleActionClick = async (e: React.MouseEvent, action: any) => {
+        if (action.isResume) {
+            e.preventDefault();
+            if (isDownloading) return;
+
+            setIsDownloading(true);
+            try {
+                // Fetch, Decrypt, and Download on Click
+                const url = await fetchAndDecryptAsset(resumeEncryptedPath, SECRET_KEY, 'application/pdf');
+                if (url) {
+                    triggerDownload(url, "Prem_Kumar_Gundu_Resume.pdf");
+                    // Clean up the blob after a short delay
+                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+                } else {
+                    alert("Could not load resume. Please try again.");
+                }
+            } catch (error) {
+                console.error("Resume download failed", error);
+            } finally {
+                setIsDownloading(false);
+            }
         }
-      } catch (error) {
-        console.error("Resume download failed", error);
-      } finally {
-        setIsDownloading(false);
-      }
-    }
-  };
+    };
 
-  return (
-    <section className="min-h-screen flex items-center justify-center pt-24 pb-16 px-8 relative">
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
-        
-        {/* Text Content */}
-        <div className="flex flex-col items-start text-left">
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 bg-primary text-white rounded-full text-xs font-bold mb-6 shadow-md">
-            <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-            {heroData.status}
-          </div>
+    return (
+        <section className="min-h-screen flex items-center justify-center pt-24 pb-16 px-8 relative">
+            <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
 
-          <h1 className="text-xl font-bold text-gray mb-2">{heroData.greeting}</h1>
-          <h2 className="font-serif text-5xl lg:text-6xl font-black text-dark mb-4 leading-tight">
-            {heroData.intro} <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{heroData.name}</span>
-          </h2>
-          <h3 className="text-2xl font-semibold text-gray mb-6">
-            {heroData.title}
-          </h3>
-          <p className="text-lg text-gray font-medium leading-relaxed mb-8 max-w-xl">
-            {heroData.description}
-          </p>
+                {/* Text Content */}
+                <div className="flex flex-col items-start text-left">
+                    {/* Status Badge */}
+                    <div className="inline-flex items-center gap-2 px-5 py-2 bg-primary text-white rounded-full text-xs font-bold mb-6 shadow-md">
+                        <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                        {heroData.status}
+                    </div>
 
-          <div className="mb-10">
-            <div className="text-xs font-bold text-dark uppercase tracking-widest mb-3">Core Technologies</div>
-            <div className="flex flex-wrap gap-3">
-              {heroData.skills.map((skill, i) => (
-                <span key={i} className="px-4 py-2 bg-white/60 border border-primary/20 rounded-full text-dark font-semibold text-xs hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1 cursor-default">
-                  <i className={`fab ${skill.icon} mr-2`}></i>{skill.name}
-                </span>
-              ))}
-            </div>
-          </div>
+                    <h1 className="text-xl font-bold text-gray mb-2">{heroData.greeting}</h1>
+                    <h2 className="font-serif text-5xl lg:text-6xl font-black text-dark mb-4 leading-tight">
+                        {heroData.intro} <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">{heroData.name}</span>
+                    </h2>
+                    <h3 className="text-2xl font-semibold text-gray mb-6">
+                        {heroData.title}
+                    </h3>
+                    <p className="text-lg text-gray font-medium leading-relaxed mb-8 max-w-xl">
+                        {heroData.description}
+                    </p>
 
-          <div className="flex gap-4">
-            {heroData.actions.map((action, idx) => (
-              <a 
-                key={idx}
-                href={action.href} 
-                onClick={(e) => handleActionClick(e, action)}
-                className={`
+                    <div className="mb-10">
+                        <div className="text-xs font-bold text-dark uppercase tracking-widest mb-3">Core Technologies</div>
+                        <div className="flex flex-wrap gap-3">
+                            {heroData.skills.map((skill, i) => (
+                                <span key={i} className="px-4 py-2 bg-white/60 border border-primary/20 rounded-full text-dark font-semibold text-xs hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1 cursor-default">
+                                    <i
+                                        className={`${skill.name === "Oracle Integration Cloud" || skill.name === "REST/SOAP Adapters" ? "fas" : "fab"
+                                            } ${skill.icon} mr-2`}
+                                    />
+                                    {skill.name}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                        {heroData.actions.map((action, idx) => (
+                            <a
+                                key={idx}
+                                href={action.href}
+                                onClick={(e) => handleActionClick(e, action)}
+                                className={`
                   px-8 py-3 rounded-full font-bold text-sm shadow-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-1 cursor-pointer
-                  ${action.primary 
-                    ? 'bg-primary text-white hover:bg-primary-dark' 
-                    : 'bg-transparent border-2 border-primary text-dark hover:bg-primary/5'}
+                  ${action.primary
+                                        ? 'bg-primary text-white hover:bg-primary-dark'
+                                        : 'bg-transparent border-2 border-primary text-dark hover:bg-primary/5'}
                 `}
-              >
-                <i className={action.icon}></i> 
-                {action.isResume && isDownloading ? 'Loading...' : action.label}
-              </a>
-            ))}
-          </div>
-        </div>
+                            >
+                                <i className={action.icon}></i>
+                                {action.isResume && isDownloading ? 'Loading...' : action.label}
+                            </a>
+                        ))}
+                    </div>
+                </div>
 
-        {/* Profile Image */}
-        <div className="flex justify-center items-center">
-          <div className="w-[300px] h-[300px] lg:w-[380px] lg:h-[380px] rounded-full bg-gradient-to-br from-secondary to-primary p-1 shadow-2xl animate-[floatProfile_6s_ease-in-out_infinite] relative">
-            <div className="w-full h-full rounded-full overflow-hidden border-4 border-white relative bg-white">
-               {profileUrl ? (
-                 <Image 
-                   src={profileUrl}
-                   alt={heroData.name}
-                   fill 
-                   className="object-cover"
-                   priority
-                 />
-               ) : (
-                 <div className="w-full h-full bg-gray-200 animate-pulse flex items-center justify-center">
-                    <span className="text-gray-400 text-xs">Loading...</span>
-                 </div>
-               )}
+                {/* Profile Image */}
+                <div className="flex justify-center items-center">
+                    <div className="w-[300px] h-[300px] lg:w-[380px] lg:h-[380px] rounded-full bg-gradient-to-br from-secondary to-primary p-1 shadow-2xl animate-[floatProfile_6s_ease-in-out_infinite] relative">
+                        <div className="w-full h-full rounded-full overflow-hidden border-4 border-white relative bg-white">
+                            {profileUrl ? (
+                                <Image
+                                    src={profileUrl}
+                                    alt={heroData.name}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+                            ) : (
+                                <div className="w-full h-full bg-gray-200 animate-pulse flex items-center justify-center">
+                                    <span className="text-gray-400 text-xs">Loading...</span>
+                                </div>
+                            )}
+                        </div>
+                        {/* Spinning Dashed Border */}
+                        <div className="absolute inset-[-20px] border-2 border-dashed border-primary rounded-full animate-[spin_30s_linear_infinite] opacity-50 pointer-events-none" />
+                    </div>
+                </div>
+
             </div>
-            {/* Spinning Dashed Border */}
-            <div className="absolute inset-[-20px] border-2 border-dashed border-primary rounded-full animate-[spin_30s_linear_infinite] opacity-50 pointer-events-none" />
-          </div>
-        </div>
-
-      </div>
-    </section>
-  );
+        </section>
+    );
 }

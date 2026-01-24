@@ -162,8 +162,8 @@ export const skillsData = [
     icon: "fas fa-cloud",
     skills: [
       { name: "Oracle Integration Cloud (Gen 3)", primary: true, icon: "fas fa-cloud" },
-      { name: "Oracle Fusion ERP", primary: true, icon: "fas fa-building" },
-      { name: "REST/SOAP Adapters", primary: false, icon: "fas fa-plug" },
+      { name: "Oracle Fusion ERP", primary: false, icon: "fas fa-building" },
+      { name: "REST/SOAP Adapters", primary: true, icon: "fas fa-plug" },
       { name: "Event-Driven Architecture", primary: false, icon: "fas fa-bolt" },
       { name: "FBDI & BIP Reporting", primary: false, icon: "fas fa-file-invoice" },
       { name: "OCI & PaaS", primary: false, icon: "fas fa-cloud" },
@@ -205,7 +205,7 @@ export const skillsData = [
     skills: [
       { name: "MongoDB Atlas", primary: false, icon: "fas fa-leaf" },
       { name: "PostgreSQL", primary: false, icon: "fas fa-database" },
-      { name: "Oracle Autonomous DB", primary: false, icon: "fab fa-oracle" },
+      { name: "Oracle Autonomous DB", primary: false, icon: "fab fa-database" },
       { name: "MSSQL", primary: false, icon: "fas fa-server" },
       { name: "AWS (EC2, S3)", primary: true, icon: "fab fa-aws" },
       { name: "Docker", primary: true, icon: "fab fa-docker" },
@@ -253,14 +253,15 @@ export const heroData = {
   description: "Delivering high-impact enterprise integrations and modern web applications that automate workflows, reduce manual effort, and scale efficiently.",
   profileImage: null,
   skills: [
-    { icon: 'fa-cloud', name: 'Oracle Integration' },
+    { icon: 'fa-cloud', name: 'Oracle Integration Cloud' },
+    { icon: "fa-plug", name: "REST/SOAP Adapters" },
     { icon: 'fa-react', name: 'React.js' },
+    { icon: 'fa-microsoft', name: '.NET' },
     { icon: 'fa-java', name: 'Spring Boot' },
     { icon: 'fa-node-js', name: 'Node.js' },
     { icon: 'fa-aws', name: 'AWS' },
     { icon: 'fa-docker', name: 'Docker' },
-    { icon: 'fa-microsoft', name: '.NET' },
-    { icon: 'fa-git-alt', name: 'Git' },
+    { icon: 'fa-git-alt', name: 'Git & SVN ' },
   ],
   actions: [
     { 

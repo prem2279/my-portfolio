@@ -1,3 +1,4 @@
+import DisableRightClick from '@/src/components/DisableRightClick';
 import Header from '@/src/components/Header';
 import Hero from '@/src/components/Hero';
 import About from '@/src/components/About';
@@ -11,20 +12,21 @@ import Cursor from '@/src/components/Cursor';
 
 export default function Home() {
   return (
-    <main>
-      <Cursor />
-      <Header />
-      <div className='px-5 py-5'>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Certifications />
-        <Education />
-        <Contact />
-      </div>
-
-    </main>
+    <DisableRightClick>
+      <main>
+        <Cursor />
+        <Header />
+        <div className="px-5 py-5">
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Certifications />
+          <Education />
+          <Contact />
+        </div>
+      </main>
+    </DisableRightClick>
   );
 }
