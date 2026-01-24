@@ -10,26 +10,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#ea580c', // Orange 600
-          dark: '#c2410c',    // Orange 700
-        },
-        secondary: '#db2777', // Pink 600
-        accent: '#f59e0b',    // Amber 500
-        dark: '#0f0702',      // Text Main
-        gray: {
-          DEFAULT: '#4a4a4a', // Text Secondary
-          light: '#d1d5db',
-        },
-        glass: 'rgba(255, 255, 255, 0.95)',
-      },
+  primary: { DEFAULT: '#d97706', dark: '#b45309' }, // Amber 600/700
+  secondary: '#1e293b', // Slate 800
+  accent: '#0f172a',    // Slate 900
+  dark: '#1c1917',      // Stone 900
+  gray: { DEFAULT: '#57534e', light: '#d6d3d1' },
+  glass: 'rgba(255, 255, 255, 0.95)',
+},
+backgroundImage: {
+  'main-gradient': 'linear-gradient(to right, #fffbeb 0%, #fff7ed 100%)', // Warm Amber tint
+},
       fontFamily: {
         sans: ['var(--font-poppins)', 'sans-serif'],
         serif: ['var(--font-playfair)', 'serif'],
         logo: ['var(--font-nanum)', 'sans-serif'],
-      },
-      backgroundImage: {
-        'main-gradient': 'linear-gradient(to right, #fff7ed 0%, #fff1f2 100%)',
       }
     },
   },

@@ -104,7 +104,10 @@ export const projectsData = [
       'Built complex BIP reports for downstream financial reconciliation',
       'Implemented fault handling framework enabling business exception reprocessing'
     ],
-    impact: 'End-to-end automation of financial data flows.'
+    impact: 'End-to-end automation of financial data flows.',
+    // You can leave these empty or undefined if not applicable
+    github: null,
+    live: null
   },
   {
     tag: 'Integration',
@@ -117,7 +120,9 @@ export const projectsData = [
       'Designed scheduled integrations with Connectivity Agent and FTP polling',
       'Integrated OCI Log Analytics for real-time monitoring'
     ],
-    impact: 'Seamless product catalog synchronization across systems.'
+    impact: 'Seamless product catalog synchronization across systems.',
+    github: null,
+    live: null
   },
   {
     tag: 'Full Stack',
@@ -130,7 +135,10 @@ export const projectsData = [
       'Implemented Spring Security + PostgreSQL',
       'Engineered WebSocket messaging achieving <200ms latency'
     ],
-    impact: 'Production-ready chat platform with intelligent automation.'
+    impact: 'Production-ready chat platform with intelligent automation.',
+    // --- UPDATED HERE ---
+    github: "https://github.com/prem2279/Real-Time-Chat-Application", 
+    live: "http://ec2-18-216-235-121.us-east-2.compute.amazonaws.com/"             
   },
   {
     tag: 'Machine Learning',
@@ -140,16 +148,17 @@ export const projectsData = [
       'Developed software to detect and segment humans in images',
       'Optimized model training to reduce loss by 20%',
       'Implemented data augmentation techniques to enhance model generalization'
-    ]
+    ],
+    github: null,
+    live: null
   }
 ];
-
 export const skillsData = [
   {
     title: "Oracle EcoSystem",
-    icon: "fab fa-oracle",
+    icon: "fas fa-cloud",
     skills: [
-      { name: "Oracle Integration Cloud (Gen 3)", primary: true, icon: "fab fa-oracle" },
+      { name: "Oracle Integration Cloud (Gen 3)", primary: true, icon: "fas fa-cloud" },
       { name: "Oracle Fusion ERP", primary: true, icon: "fas fa-building" },
       { name: "REST/SOAP Adapters", primary: false, icon: "fas fa-plug" },
       { name: "Event-Driven Architecture", primary: false, icon: "fas fa-bolt" },
@@ -230,3 +239,40 @@ export const contactData = [
     download: true
   }
 ];
+
+// ... (keep existing exports like aboutData, experienceData, etc.)
+
+export const heroData = {
+  status: "Available for Opportunities",
+  greeting: "Hi,",
+  intro: "I am",
+  name: "Prem Kumar Gundu",
+  title: "Full Stack Developer & Oracle Integration Cloud Professional",
+  description: "Delivering high-impact enterprise integrations and modern web applications that automate workflows, reduce manual effort, and scale efficiently.",
+  profileImage: "/assets/profile.jpg",
+  skills: [
+    { icon: 'fa-cloud', name: 'Oracle Integration' },
+    { icon: 'fa-react', name: 'React.js' },
+    { icon: 'fa-java', name: 'Spring Boot' },
+    { icon: 'fa-node-js', name: 'Node.js' },
+    { icon: 'fa-aws', name: 'AWS' },
+    { icon: 'fa-docker', name: 'Docker' },
+    { icon: 'fa-microsoft', name: '.NET' },
+    { icon: 'fa-git-alt', name: 'Git' },
+  ],
+  actions: [
+    { 
+      label: "View Projects", 
+      href: "#projects", 
+      icon: "fas fa-code", 
+      primary: true 
+    },
+    { 
+      label: "Download Resume", 
+      href: "/assets/resume.pdf", 
+      icon: "fas fa-download", 
+      primary: false, 
+      download: true 
+    }
+  ]
+};

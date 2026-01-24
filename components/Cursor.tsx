@@ -13,14 +13,14 @@ export default function Cursor() {
     const createBubble = (x: number, y: number) => {
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
-      const size = Math.random() * 25 + 15;
+      const size = Math.random() * 30 + 10;
       bubble.style.width = `${size}px`;
       bubble.style.height = `${size}px`;
       bubble.style.left = `${x}px`;
       bubble.style.top = `${y}px`;
       bubble.style.background = `linear-gradient(135deg, rgba(var(--primary-rgb), ${Math.random() * 0.4 + 0.2}), rgba(var(--secondary-rgb), ${Math.random() * 0.4 + 0.2}))`;
       document.body.appendChild(bubble);
-      setTimeout(() => bubble.remove(), 800);
+      setTimeout(() => bubble.remove(), 1200);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -28,7 +28,7 @@ export default function Cursor() {
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
       }
-      if (Math.random() > 0.5) createBubble(mouseX, mouseY);
+      if (Math.random() > 0.05) createBubble(mouseX, mouseY);
     };
 
     const animate = () => {

@@ -4,8 +4,8 @@
 
 
 :root {
-  --primary-rgb: 234, 88, 12;
-  --secondary-rgb: 219, 39, 119;
+  --primary-rgb: 217, 119, 6;
+  --secondary-rgb: 30, 41, 59;
 }
 
 html { scroll-behavior: smooth; }

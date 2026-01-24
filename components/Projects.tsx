@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { projectsData } from "@/assets/portfolio-data";
 
 export default function Projects() {
-  // Use 'typeof projectsData[0]' to infer type automatically
   const [selectedProject, setSelectedProject] = useState<typeof projectsData[0] | null>(null);
 
   useEffect(() => {
@@ -20,6 +19,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
         <h2 className="font-serif text-4xl md:text-5xl font-black text-center mb-16 text-dark tracking-tight">Featured Projects</h2>
         
+        {/* Grid View */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project, idx) => (
             <div 
@@ -53,7 +53,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* --- MODAL (Overlay) --- */}
+      {/* Modal Overlay */}
       {selectedProject && (
         <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8">
           <div 
@@ -62,6 +62,7 @@ export default function Projects() {
           />
 
           <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-[scaleUp_0.3s_cubic-bezier(0.16,1,0.3,1)]">
+            
             {/* Header */}
             <div className="p-8 border-b border-gray/10 flex justify-between items-start bg-gradient-to-r from-white to-primary/5 sticky top-0 z-10">
               <div>
@@ -122,15 +123,42 @@ export default function Projects() {
               </div>
             </div>
             
-            {/* Footer */}
-            <div className="p-6 border-t border-gray/10 bg-gray/5 flex justify-end">
+            {/* UPDATED Footer with GitHub / Live Links */}
+            <div className="p-6 border-t border-gray/10 bg-gray/5 flex flex-col-reverse sm:flex-row justify-between items-center gap-4">
+              
+              {/* Left Side: Project Links */}
+              <div className="flex gap-4 w-full sm:w-auto">
+                {selectedProject.github && (
+                  <a 
+                    href={selectedProject.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-none text-center px-5 py-2 border-2 border-dark text-dark rounded-full font-bold text-sm hover:bg-dark hover:text-white transition-all flex items-center justify-center gap-2"
+                  >
+                    <i className="fab fa-github"></i> View Code
+                  </a>
+                )}
+                {selectedProject.live && (
+                  <a 
+                    href={selectedProject.live} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-none text-center px-5 py-2 bg-primary text-white rounded-full font-bold text-sm hover:bg-primary-dark transition-all flex items-center justify-center gap-2 shadow-lg"
+                  >
+                    <i className="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                )}
+              </div>
+
+              {/* Right Side: Close Button */}
               <button 
                 onClick={() => setSelectedProject(null)}
-                className="px-6 py-2 bg-dark text-white rounded-full font-bold hover:bg-primary transition-colors text-sm"
+                className="w-full sm:w-auto px-6 py-2 text-gray font-bold hover:text-dark transition-colors text-sm"
               >
-                Close Project
+                Close
               </button>
             </div>
+
           </div>
         </div>
       )}
