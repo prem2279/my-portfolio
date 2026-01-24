@@ -1,147 +1,139 @@
 'use client';
-import { useState } from 'react';
-
-const projects = [
-  {
-    tag: 'Oracle Cloud',
-    title: 'Oracle Fusion Cloud Financial Integrations',
-    tech: 'OIC Gen 3 • ERP Cloud Adapter • FBDI • BIP',
-    challenges: 'Manual financial data entry into Oracle ERP caused delays and errors.',
-    solutions: [
-      'Designed scheduled integrations automating journal/invoice imports via FBDI',
-      'Configured ERP Cloud Adapter for callback handling',
-      'Built complex BIP reports for downstream financial reconciliation',
-      'Implemented fault handling framework enabling business exception reprocessing'
-    ],
-    impact: 'End-to-end automation of financial data flows.'
-  },
-  {
-    tag: 'Integration',
-    title: 'OCI & Fusion Integration Platform',
-    tech: 'OIC • Fusion ERP • Shopify • Pub/Sub',
-    challenges: 'Real-time product catalog sync between Fusion ERP and Shopify.',
-    solutions: [
-      'Built event-driven integration responding to Fusion "Item Creation" events',
-      'Implemented Pub/Sub pattern for asynchronous event processing',
-      'Designed scheduled integrations with Connectivity Agent',
-      'Integrated OCI Log Analytics for real-time monitoring'
-    ],
-    impact: 'Seamless product catalog synchronization across systems.'
-  },
-  {
-    tag: 'Full Stack',
-    title: 'Real-time Chat Application with AI',
-    tech: 'React.js • Spring Boot • Llama 3 • WebSockets',
-    challenges: 'Need for modern messaging platform with AI automation.',
-    solutions: [
-      'Developed full-stack chat with public/private messaging and presence indicators',
-      'Integrated Llama 3 AI assistant for context-aware responses',
-      'Implemented Spring Security + PostgreSQL',
-      'Engineered WebSocket messaging achieving <200ms latency'
-    ],
-    impact: 'Production-ready chat platform with intelligent automation.'
-  },
-  {
-    tag: 'Machine Learning',
-    title: 'Image Segmentation with ML',
-    tech: 'Python • TensorFlow • U-Net',
-    solutions: [
-      'Developed software to detect and segment humans in images',
-      'Optimized model training to reduce loss by 20%',
-      'Implemented data augmentation techniques to enhance model generalization'
-    ]
-  }
-];
+import { useState, useEffect } from 'react';
+import { projectsData } from "@/assets/portfolio-data";
 
 export default function Projects() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  // Use 'typeof projectsData[0]' to infer type automatically
+  const [selectedProject, setSelectedProject] = useState<typeof projectsData[0] | null>(null);
 
-  const toggleProject = (index: number) => {
-    if (expandedIndex === index) {
-      setExpandedIndex(null);
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
     } else {
-      setExpandedIndex(index);
-      setTimeout(() => {
-        const el = document.getElementById(`project-${index}`);
-        if (el) {
-          const offset = 120; // Adjusted for taller header
-          const elementPosition = el.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-        }
-      }, 300);
+      document.body.style.overflow = 'unset';
     }
-  };
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [selectedProject]);
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12">
+    <section id="projects" className="py-24 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
         <h2 className="font-serif text-4xl md:text-5xl font-black text-center mb-16 text-dark tracking-tight">Featured Projects</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-          {projects.map((project, idx) => {
-            const isExpanded = expandedIndex === idx;
-            
-            return (
-              <div 
-                key={idx}
-                id={`project-${idx}`}
-                onClick={() => toggleProject(idx)}
-                className={`
-                  bg-glass rounded-2xl border border-primary/20 overflow-hidden cursor-pointer transition-all duration-500 ease-in-out text-left
-                  hover:border-primary hover:shadow-xl
-                  ${isExpanded ? 'col-span-1 md:col-span-2 lg:col-span-3 ring-2 ring-primary shadow-2xl z-10 scale-[1.01]' : 'hover:-translate-y-2'}
-                `}
-              >
-                {/* Header Preview */}
-                <div className="p-8">
-                  <span className="inline-block px-3 py-1 bg-primary text-white rounded-full text-xs font-extrabold uppercase tracking-wider mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectsData.map((project, idx) => (
+            <div 
+              key={idx}
+              onClick={() => setSelectedProject(project)}
+              className="
+                group bg-glass rounded-2xl border border-primary/20 overflow-hidden cursor-pointer 
+                transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary
+                flex flex-col h-full
+              "
+            >
+              <div className="p-8 flex flex-col h-full">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="inline-block px-3 py-1 bg-primary text-white rounded-full text-xs font-extrabold uppercase tracking-wider shadow-sm">
                     {project.tag}
                   </span>
-                  <h3 className="text-2xl font-bold text-dark mb-2 leading-tight">{project.title}</h3>
-                  <p className="text-sm font-bold text-gray/80">{project.tech}</p>
+                  <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <i className="fas fa-arrow-right text-sm"></i>
+                  </span>
                 </div>
-
-                {/* Expandable Content */}
-                <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="p-8 pt-0 border-t border-primary/10 bg-primary/5">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-                      
-                      <div className="space-y-6">
-                        {project.challenges && (
-                          <div>
-                            <h4 className="text-sm font-extrabold text-primary-dark uppercase tracking-widest mb-2">Challenge</h4>
-                            <p className="text-gray font-medium leading-relaxed">{project.challenges}</p>
-                          </div>
-                        )}
-                        {project.impact && (
-                          <div>
-                            <h4 className="text-sm font-extrabold text-primary-dark uppercase tracking-widest mb-2">Impact</h4>
-                            <p className="text-dark font-semibold leading-relaxed">{project.impact}</p>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className={project.challenges ? "" : "col-span-1 md:col-span-2"}>
-                        <h4 className="text-sm font-extrabold text-primary-dark uppercase tracking-widest mb-3">Solution</h4>
-                        <ul className="space-y-2">
-                          {project.solutions?.map((sol, i) => (
-                            <li key={i} className="flex items-start gap-3 text-gray font-medium">
-                              <i className="fas fa-check text-accent mt-1.5 text-xs"></i>
-                              <span>{sol}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
+                
+                <h3 className="text-2xl font-bold text-dark mb-3 leading-tight group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm font-bold text-gray/80 mt-auto pt-4 border-t border-primary/10">
+                  {project.tech}
+                </p>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* --- MODAL (Overlay) --- */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8">
+          <div 
+            className="absolute inset-0 bg-dark/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"
+            onClick={() => setSelectedProject(null)}
+          />
+
+          <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-[scaleUp_0.3s_cubic-bezier(0.16,1,0.3,1)]">
+            {/* Header */}
+            <div className="p-8 border-b border-gray/10 flex justify-between items-start bg-gradient-to-r from-white to-primary/5 sticky top-0 z-10">
+              <div>
+                <span className="inline-block px-3 py-1 bg-primary text-white rounded-full text-xs font-extrabold uppercase tracking-wider mb-3">
+                  {selectedProject.tag}
+                </span>
+                <h3 className="text-2xl md:text-3xl font-black text-dark leading-tight">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-sm font-bold text-gray mt-2">{selectedProject.tech}</p>
+              </div>
+              
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="w-10 h-10 rounded-full bg-gray/10 hover:bg-primary hover:text-white flex items-center justify-center transition-colors shrink-0 ml-4"
+              >
+                <i className="fas fa-times text-lg"></i>
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="p-8 overflow-y-auto custom-scrollbar">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="space-y-8">
+                  {selectedProject.challenges && (
+                    <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+                      <h4 className="text-sm font-extrabold text-primary-dark uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <i className="fas fa-exclamation-circle"></i> Challenge
+                      </h4>
+                      <p className="text-gray font-medium leading-relaxed">{selectedProject.challenges}</p>
+                    </div>
+                  )}
+                  {selectedProject.impact && (
+                    <div className="bg-secondary/5 p-6 rounded-2xl border border-secondary/10">
+                      <h4 className="text-sm font-extrabold text-secondary uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <i className="fas fa-chart-line"></i> Impact
+                      </h4>
+                      <p className="text-dark font-bold leading-relaxed">{selectedProject.impact}</p>
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-extrabold text-dark uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <i className="fas fa-lightbulb text-accent"></i> Solution Architecture
+                  </h4>
+                  <ul className="space-y-4">
+                    {selectedProject.solutions.map((sol, i) => (
+                      <li key={i} className="flex items-start gap-4 p-3 rounded-xl hover:bg-gray/5 transition-colors">
+                        <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
+                          {i + 1}
+                        </span>
+                        <span className="text-gray font-medium leading-relaxed">{sol}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            {/* Footer */}
+            <div className="p-6 border-t border-gray/10 bg-gray/5 flex justify-end">
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="px-6 py-2 bg-dark text-white rounded-full font-bold hover:bg-primary transition-colors text-sm"
+              >
+                Close Project
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

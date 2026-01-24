@@ -1,5 +1,6 @@
 'use client';
 import Reveal from "./Reveal";
+import { contactData } from "@/assets/portfolio-data";
 
 export default function Contact() {
   return (
@@ -8,33 +9,7 @@ export default function Contact() {
         <h2 className="font-serif text-4xl font-black text-center mb-14 text-dark">Let's Connect</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { 
-              icon: "fas fa-envelope", 
-              label: "Email", 
-              value: "prem@example.com", 
-              link: "mailto:prem@example.com" 
-            },
-            { 
-              icon: "fab fa-linkedin", 
-              label: "LinkedIn", 
-              value: "Prem Kumar Gundu", 
-              link: "https://linkedin.com" // Update with real link
-            },
-            { 
-              icon: "fab fa-github", 
-              label: "GitHub", 
-              value: "prem2279", 
-              link: "https://github.com/prem2279" 
-            },
-            { 
-              icon: "fas fa-file-pdf", 
-              label: "Resume", 
-              value: "Download PDF", 
-              link: "/assets/resume.pdf",
-              download: true
-            }
-          ].map((item, idx) => (
+          {contactData.map((item, idx) => (
             <Reveal key={idx}>
               <a 
                 href={item.link} 

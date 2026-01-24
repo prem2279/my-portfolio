@@ -49,9 +49,9 @@ export default function Cursor() {
   }, []);
 
   return (
-    <div className="hidden md:block pointer-events-none fixed inset-0 z-[9999]">
-      <div ref={cursorRef} className="fixed w-5 h-5 border-2 border-primary rounded-full z-[9999]" />
-      <div ref={followerRef} className="fixed w-10 h-10 border-2 border-primary/30 rounded-full z-[9998]" />
+    <div className="hidden md:block pointer-events-none fixed inset-0 z-[999999]">
+      <div ref={cursorRef} className="fixed w-5 h-5 border-2 border-primary rounded-full z-[999999]" />
+      <div ref={followerRef} className="fixed w-10 h-10 border-2 border-primary/30 rounded-full z-[999998]" />
     </div>
   );
 }

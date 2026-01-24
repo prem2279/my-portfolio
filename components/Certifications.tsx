@@ -1,5 +1,6 @@
 'use client';
 import Reveal from "./Reveal";
+import { certificationsData } from "@/assets/portfolio-data";
 
 export default function Certifications() {
   return (
@@ -8,22 +9,9 @@ export default function Certifications() {
         <h2 className="font-serif text-4xl font-black text-center mb-14 text-dark">Professional Certifications</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Oracle Cloud Infrastructure 2025 Application Integration Professional",
-              desc: "Expert in OIC Gen 3 integrations, REST/SOAP adapters, scheduled orchestrations, fault handling, and enterprise SaaS connectivity."
-            },
-            {
-              title: "Oracle Cloud Infrastructure 2025 Developer Professional",
-              desc: "Proficient in cloud-native app development on OCI using SDKs, CLI, IAM policies, Oracle Functions, and containerized deployments."
-            },
-            {
-              title: "Oracle Cloud Infrastructure 2025 AI Foundations Associate",
-              desc: "Solid foundation in AI/ML: supervised/unsupervised learning, deep learning (CNNs, RNNs), generative AI, and Oracle Cloud AI services."
-            }
-          ].map((cert, idx) => (
+          {certificationsData.map((cert, idx) => (
             <Reveal key={idx}>
-              <a href="#" target="_blank" className="block h-full group">
+              <a href={cert.link} target="_blank" className="block h-full group">
                 <div className="bg-glass p-8 rounded-2xl border border-primary/20 border-t-[6px] border-t-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
                   
                   <div className="flex justify-between items-start mb-6">
