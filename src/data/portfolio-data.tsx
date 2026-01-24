@@ -205,7 +205,7 @@ export const skillsData = [
     skills: [
       { name: "MongoDB Atlas", primary: false, icon: "fas fa-leaf" },
       { name: "PostgreSQL", primary: false, icon: "fas fa-database" },
-      { name: "Oracle Autonomous DB", primary: false, icon: "fab fa-database" },
+      { name: "Oracle Autonomous DB", primary: false, icon: "fas fa-database" },
       { name: "MSSQL", primary: false, icon: "fas fa-server" },
       { name: "AWS (EC2, S3)", primary: true, icon: "fab fa-aws" },
       { name: "Docker", primary: true, icon: "fab fa-docker" },
