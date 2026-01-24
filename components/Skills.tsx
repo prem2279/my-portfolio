@@ -1,8 +1,9 @@
+'use client';
 import Reveal from "./Reveal";
 
 const skillCategories = [
   {
-    title: "Integration & Cloud",
+    title: "Oracle EcoSystem",
     icon: "fab fa-oracle",
     skills: [
       { name: "Oracle Integration Cloud (Gen 3)", primary: true, icon: "fab fa-oracle" },
@@ -64,12 +65,17 @@ export default function Skills() {
     <section id="skills" className="py-24 px-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-serif text-4xl font-black text-center mb-14 text-dark">Skills & Technologies</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           {skillCategories.map((cat, idx) => (
             <Reveal key={idx}>
-              <div className="bg-glass p-10 rounded-2xl border border-primary/20 shadow-sm hover:shadow-lg hover:border-primary transition-all duration-300">
+              {/* UPDATED with Elevation */}
+              <div className="
+                bg-glass p-10 rounded-2xl border border-primary/20 shadow-sm h-full flex flex-col
+                transition-all duration-300 
+                hover:shadow-xl hover:-translate-y-2 hover:border-primary
+              ">
                 <h3 className="text-xl font-bold mb-6 flex items-center gap-3 text-dark">
-                  <span className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white text-lg">
+                  <span className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white text-lg shrink-0">
                     <i className={cat.icon}></i>
                   </span>
                   {cat.title}
