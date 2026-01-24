@@ -1,6 +1,6 @@
 'use client';
 import Reveal from "./Reveal";
-import { aboutData } from "@/assets/portfolio-data";
+import { aboutData } from "@/src/data/portfolio-data";
 
 export default function About() {
   return (

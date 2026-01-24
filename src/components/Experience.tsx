@@ -1,6 +1,6 @@
 'use client';
 import Reveal from "./Reveal";
-import { experienceData } from "@/assets/portfolio-data";
+import { experienceData } from "@/src/data/portfolio-data";
 
 export default function Experience() {
   return (

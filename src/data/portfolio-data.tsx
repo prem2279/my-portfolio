@@ -1,5 +1,8 @@
 import React from "react";
 
+export const profileEncryptedPath = "/assets/profile.txt";
+export const resumeEncryptedPath = "/assets/resume.txt";
+
 export const aboutData = {
   title: "About Me",
   bio: [
@@ -235,12 +238,11 @@ export const contactData = [
     icon: "fas fa-file-pdf", 
     label: "Resume", 
     value: "Download PDF", 
-    link: "/assets/resume.pdf",
-    download: true
+    link: "#",
+    isResume: true 
   }
 ];
 
-// ... (keep existing exports like aboutData, experienceData, etc.)
 
 export const heroData = {
   status: "Available for Opportunities",
@@ -249,7 +251,7 @@ export const heroData = {
   name: "Prem Kumar Gundu",
   title: "Full Stack Developer & Oracle Integration Cloud Professional",
   description: "Delivering high-impact enterprise integrations and modern web applications that automate workflows, reduce manual effort, and scale efficiently.",
-  profileImage: "/assets/profile.jpg",
+  profileImage: null,
   skills: [
     { icon: 'fa-cloud', name: 'Oracle Integration' },
     { icon: 'fa-react', name: 'React.js' },
@@ -269,10 +271,10 @@ export const heroData = {
     },
     { 
       label: "Download Resume", 
-      href: "/assets/resume.pdf", 
+      href: "#", 
       icon: "fas fa-download", 
       primary: false, 
-      download: true 
+      isResume: true 
     }
   ]
 };

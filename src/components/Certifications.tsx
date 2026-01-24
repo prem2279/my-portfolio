@@ -1,6 +1,6 @@
 'use client';
 import Reveal from "./Reveal";
-import { certificationsData } from "@/assets/portfolio-data";
+import { certificationsData } from "@/src/data/portfolio-data";
 
 export default function Certifications() {
   return (

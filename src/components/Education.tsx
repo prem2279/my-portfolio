@@ -1,6 +1,6 @@
 'use client';
 import Reveal from "./Reveal";
-import { educationData } from "@/assets/portfolio-data";
+import { educationData } from "@/src/data/portfolio-data";
 
 export default function Education() {
   return (

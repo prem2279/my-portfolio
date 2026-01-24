@@ -1,6 +1,6 @@
 'use client';
 import Reveal from "./Reveal";
-import { skillsData } from "@/assets/portfolio-data";
+import { skillsData } from "@/src/data/portfolio-data";
 
 export default function Skills() {
   return (

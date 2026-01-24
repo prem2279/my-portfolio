@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { projectsData } from "@/assets/portfolio-data";
+import { projectsData } from "@/src/data/portfolio-data";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<typeof projectsData[0] | null>(null);
