@@ -194,6 +194,7 @@ export const skillsData = [
       { name: "TypeScript", primary: true, icon: "fas fa-code" },
       { name: "JavaScript (ES6+)", primary: false, icon: "fab fa-js" },
       { name: "HTML5 & CSS3", primary: false, icon: "fab fa-html5" },
+      { name: "Tailwind CSS", primary: false, icon: "fab fa-css3" },
       { name: "Bootstrap", primary: false, icon: "fab fa-bootstrap" },
       { name: "Redux", primary: false, icon: "fas fa-layer-group" },
       { name: "React Native", primary: false, icon: "fas fa-mobile-alt" },
