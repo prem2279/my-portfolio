@@ -98,11 +98,11 @@ export const educationData = [
     ]
   },
   {
-    degree: "Bachelor's in ECE",
+    degree: "Bachelors in ECE",
     school: "NIT Bhopal, India",
     period: "August 2018 - May 2022",
     details: [
-      "Major: Electronics and Communicatin Engineering",
+      "Major: Electronics and Communication Engineering",
       "Relevant Coursework: Digital Image Processing, Computer Network, Computer Programming "
     ]
   }
