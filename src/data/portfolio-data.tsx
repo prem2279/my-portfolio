@@ -8,7 +8,7 @@ export const aboutData = {
   bio: [
     {
       title: "3+ Years of Enterprise Development",
-      description: "I build scalable web applications and cloud integrations that solve real business problems. My work bridges frontend UI, backend APIs, and Oracle Integration Cloud to deliver end-to-end solutions."
+      description: "I build scalable web applications and cloud integrations that solve real business problems. My work bridges frontend UI, backend APIs with Java Spring Boot, and Oracle Integration Cloud to deliver end-to-end solutions."
     },
     {
       title: "Oracle Integration Cloud Expertise",
@@ -32,21 +32,33 @@ export const aboutData = {
 
 export const experienceData = [
   {
-    role: "IT Services, Student Assistant",
-    company: "University at Albany",
-    period: "August 2024 - May 2025",
+    role: "Software Development Engineer 2",
+    company: "Neusix Technology Services Pvt Ltd",
+    period: "October 2025 – Present",
     achievements: [
-      <>Built full-stack ticket automation app (React + Java), <strong className="text-accent">reducing manual IT tasks by 30% weekly</strong></>,
-      <>Designed REST APIs linking responsive UI to backend, <strong className="text-accent">improving data retrieval by 25%</strong></>,
-      <>Integrated MongoDB Atlas with Node.js to manage <strong className="text-accent">50,000+ ticket records</strong> with high consistency</>,
-      <>Automated email workflows via Node.js, <strong className="text-accent">saving 10+ hours/week</strong> for the IT team</>,
-      <>Deployed 3+ AWS EC2 project instances in lab environment</>
+      <>Built complete <strong className="text-accent">React.js + TypeScript front-end</strong> for enterprise ATS platform with reusable UI components, Tailwind CSS, Zustand, and React Error Boundary.</>,
+      <>Integrated <strong className="text-accent">resume parsing API</strong> with schema validation (Zod) and toast notifications, improving recruiter efficiency and reducing manual data entry.</>,
+      <>Assisted in developing <strong className="text-accent">resume scoring services</strong> and workflow automation using TanStack Query.</>,
+      <>Implemented secure <strong className="text-accent">Microsoft SSO authentication</strong> and Nginx reverse proxy for enterprise-grade access control.</>,
+      <>Containerized apps using <strong className="text-accent">Docker</strong>, deployed via GitLab CI, and monitored environments using Portainer.</>
+    ]
+  },
+  {
+    role: "IT Services – Student Assistant",
+    company: "University at Albany",
+    period: "August 2024 – May 2025",
+    achievements: [
+      <>Developed full-stack ticket automation app with <strong className="text-accent">Java Spring Boot backend</strong> and <strong className="text-accent">React.js frontend</strong>, reducing manual IT tasks by 30% weekly</>,
+      <>Designed and consumed <strong className="text-accent">RESTful APIs</strong> linking responsive UI with backend, improving data retrieval by 25%</>,
+      <>Managed <strong className="text-accent">50K+ ticket records</strong> via MongoDB Atlas and Node.js backend scripts</>,
+      <>Automated email workflows, saving <strong className="text-accent">10+ hours/week</strong> for IT team</>,
+      <>Deployed multiple project instances on <strong className="text-accent">AWS EC2</strong> lab environment</>
     ]
   },
   {
     role: "Full Stack Developer",
     company: "Homexchange Pvt Ltd",
-    period: "August 2021 - July 2023",
+    period: "August 2021 – July 2023",
     achievements: [
       <>Developed .NET REST APIs integrating lead platforms, <strong className="text-accent">reducing data retrieval time by 40%</strong></>,
       <>Integrated Meta WhatsApp + Facebook Graph APIs with CRM, <strong className="text-accent">automating 70% of communications</strong></>,
@@ -108,7 +120,6 @@ export const projectsData = [
       'Implemented fault handling framework enabling business exception reprocessing'
     ],
     impact: 'End-to-end automation of financial data flows.',
-    // You can leave these empty or undefined if not applicable
     github: null,
     live: null
   },
@@ -139,8 +150,7 @@ export const projectsData = [
       'Engineered WebSocket messaging achieving <200ms latency'
     ],
     impact: 'Production-ready chat platform with intelligent automation.',
-    // --- UPDATED HERE ---
-    github: "https://github.com/prem2279/Real-Time-Chat-Application", 
+    github: "https://github.com/prem2279/Real-Time-Chat-Application",
     live: "http://ec2-18-216-235-121.us-east-2.compute.amazonaws.com/"             
   },
   {
@@ -156,6 +166,7 @@ export const projectsData = [
     live: null
   }
 ];
+
 export const skillsData = [
   {
     title: "Oracle EcoSystem",
@@ -227,7 +238,7 @@ export const contactData = [
     icon: "fab fa-linkedin", 
     label: "LinkedIn", 
     value: "Prem Kumar Gundu", 
-    link: "https://linkedin.com"
+    link: "https://linkedin.com/in/premgundu"
   },
   { 
     icon: "fab fa-github", 
@@ -243,7 +254,6 @@ export const contactData = [
     isResume: true 
   }
 ];
-
 
 export const heroData = {
   status: "Available for Opportunities",
