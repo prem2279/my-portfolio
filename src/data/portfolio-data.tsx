@@ -89,12 +89,12 @@ export const certificationsData = [
 
 export const educationData = [
   {
-    degree: "Master's in Computer Science",
+    degree: "Masters in Computer Science",
     school: "University at Albany, SUNY",
     period: "August 2023 - May 2025",
     details: [
-      "Concentrations: Software Development & Theoretical Computer Science",
-      "Relevant Coursework: Software Engineering, Cloud Computing, Algorithms & Data Structures"
+      "Major: Computer Science",
+      "Relevant Coursework: Artificial Intelligence, Database Systems, Software Engineering"
     ]
   },
   {
@@ -102,7 +102,8 @@ export const educationData = [
     school: "NIT Bhopal, India",
     period: "August 2018 - May 2022",
     details: [
-      "Electronics and Communication Engineering"
+      "Major: Electronics and Communicatin Engineering",
+      "Relevant Coursework: Digital Image Processing, Computer Network, Computer Programming "
     ]
   }
 ];
@@ -238,7 +239,7 @@ export const contactData = [
     icon: "fab fa-linkedin", 
     label: "LinkedIn", 
     value: "Prem Kumar Gundu", 
-    link: "https://linkedin.com/in/premgundu"
+    link: "https://www.linkedin.com/in/prem-g-5083391a6/"
   },
   { 
     icon: "fab fa-github", 
