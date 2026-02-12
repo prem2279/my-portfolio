@@ -45,7 +45,7 @@ export const experienceData = [
   },
   {
     role: "IT Services – Student Assistant",
-    company: "University at Albany",
+    company: "SUNY Albany",
     period: "August 2024 – May 2025",
     achievements: [
       <>Developed full-stack ticket automation app with <strong className="text-accent">Java Spring Boot backend</strong> and <strong className="text-accent">React.js frontend</strong>, reducing manual IT tasks by 30% weekly</>,
@@ -90,7 +90,7 @@ export const certificationsData = [
 export const educationData = [
   {
     degree: "Masters in Computer Science",
-    school: "University at Albany, SUNY",
+    school: "SUNY Albany, NewYork",
     period: "August 2023 - May 2025",
     details: [
       "Major: Computer Science",
@@ -158,11 +158,13 @@ export const projectsData = [
     tag: 'Machine Learning',
     title: 'Image Segmentation with ML',
     tech: 'Python • TensorFlow • U-Net',
+    challenges: 'Manual identification and segmentation of humans in images was time-consuming and error-prone, limiting real-time application.',
     solutions: [
       'Developed software to detect and segment humans in images',
       'Optimized model training to reduce loss by 20%',
       'Implemented data augmentation techniques to enhance model generalization'
     ],
+    impact: 'Achieved 85% segmentation accuracy and improved model efficiency for real-time image processing applications.',
     github: null,
     live: null
   }
