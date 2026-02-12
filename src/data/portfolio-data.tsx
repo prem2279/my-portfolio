@@ -48,13 +48,15 @@ export const experienceData = [
     company: "SUNY Albany",
     period: "August 2024 – May 2025",
     achievements: [
-      <>Developed full-stack ticket automation app with <strong className="text-accent">Java Spring Boot backend</strong> and <strong className="text-accent">React.js frontend</strong>, reducing manual IT tasks by 30% weekly</>,
-      <>Designed and consumed <strong className="text-accent">RESTful APIs</strong> linking responsive UI with backend, improving data retrieval by 25%</>,
-      <>Managed <strong className="text-accent">50K+ ticket records</strong> via MongoDB Atlas and Node.js backend scripts</>,
-      <>Automated email workflows, saving <strong className="text-accent">10+ hours/week</strong> for IT team</>,
-      <>Deployed multiple project instances on <strong className="text-accent">AWS EC2</strong> lab environment</>
+      <>Collaborated on designing and developing a full-stack <strong className="text-accent">Ticket Monitoring System</strong> using Java Spring Boot, React.js, MongoDB, and AWS, streamlining IT support workflows</>,
+      <>Developed and tested <strong className="text-accent">RESTful APIs</strong> for ticket lifecycle management, including creation, assignment, prioritization, and status tracking</>,
+      <>Implemented <strong className="text-accent">role-based access control (RBAC)</strong> for Admin, Technician, and End-User workflows</>,
+      <>Built responsive React.js components for real-time ticket tracking and dashboard analytics, enhancing visibility and efficiency</>,
+      <>Optimized MongoDB schemas and queries, improving data retrieval performance and scalability</>,
+      <>Assisted in deploying and managing applications on <strong className="text-accent">AWS EC2</strong>, configured IAM roles, and utilized S3 for storage</>
     ]
   },
+
   {
     role: "Full Stack Developer",
     company: "Homexchange Pvt Ltd",
