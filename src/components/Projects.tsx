@@ -17,7 +17,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-serif text-4xl md:text-5xl font-black text-center mb-16 text-dark tracking-tight">Featured Projects</h2>
+        <h2 className="font-serif text-4xl font-black text-center mb-14 text-dark">Relevant Projects</h2>
         
         {/* Grid View */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

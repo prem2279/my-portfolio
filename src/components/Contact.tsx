@@ -15,17 +15,16 @@ export default function Contact() {
 
       setIsDownloading(true);
       try {
-        // Fetch and Decrypt on Demand
+        // Fetch and decrypt base64 PDF
         const url = await fetchAndDecryptAsset(resumeEncryptedPath, SECRET_KEY, 'application/pdf');
         if (url) {
-          triggerDownload(url, "Prem_Kumar_Gundu_Resume.pdf");
-          // Cleanup
-          setTimeout(() => URL.revokeObjectURL(url), 1000);
+          // Open PDF in a new tab instead of downloading
+          window.open(url, "_blank");
         } else {
           alert("Error loading resume.");
         }
       } catch (err) {
-        console.error("Download failed", err);
+        console.error("Failed to open resume", err);
       } finally {
         setIsDownloading(false);
       }
@@ -36,12 +35,12 @@ export default function Contact() {
     <section id="contact" className="py-24 px-8 pb-32">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-serif text-4xl font-black text-center mb-14 text-dark">Let's Connect</h2>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {contactData.map((item, idx) => (
             <Reveal key={idx}>
-              <a 
-                href={item.link} 
+              <a
+                href={item.link}
                 onClick={(e) => handleLinkClick(e, item)}
                 target={item.link.startsWith('http') ? "_blank" : undefined}
                 rel={item.link.startsWith('http') ? "noopener noreferrer" : undefined}

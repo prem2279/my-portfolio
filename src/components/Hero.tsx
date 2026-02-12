@@ -31,28 +31,27 @@ export default function Hero() {
     }, [SECRET_KEY]); // profileUrl removed from deps to prevent loop
 
     const handleActionClick = async (e: React.MouseEvent, action: any) => {
-        if (action.isResume) {
-            e.preventDefault();
-            if (isDownloading) return;
+    if (action.isResume) {
+        e.preventDefault();
+        if (isDownloading) return;
 
-            setIsDownloading(true);
-            try {
-                // Fetch, Decrypt, and Download on Click
-                const url = await fetchAndDecryptAsset(resumeEncryptedPath, SECRET_KEY, 'application/pdf');
-                if (url) {
-                    triggerDownload(url, "Prem_Kumar_Gundu_Resume.pdf");
-                    // Clean up the blob after a short delay
-                    setTimeout(() => URL.revokeObjectURL(url), 1000);
-                } else {
-                    alert("Could not load resume. Please try again.");
-                }
-            } catch (error) {
-                console.error("Resume download failed", error);
-            } finally {
-                setIsDownloading(false);
+        setIsDownloading(true);
+        try {
+            // Fetch and decrypt base64 PDF
+            const url = await fetchAndDecryptAsset(resumeEncryptedPath, SECRET_KEY, 'application/pdf');
+            if (url) {
+                // Open PDF in a new tab instead of downloading
+                window.open(url, "_blank");
+            } else {
+                alert("Could not load resume. Please try again.");
             }
+        } catch (error) {
+            console.error("Resume open failed", error);
+        } finally {
+            setIsDownloading(false);
         }
-    };
+    }
+};
 
     return (
         <section className="min-h-screen flex items-center justify-center pt-24 pb-16 px-8 relative">
